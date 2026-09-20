@@ -1,26 +1,49 @@
-# BYLDR Engine 1.0.1
+# Botanic Operations
 
-Static 3D building game for GitHub Pages.
+Twenty-style inventory / operations UI customized for the Botanic sklad workflow.
 
-Features:
-- Three.js 3D builder
-- Build / Erase
-- Rotation
-- Chunk organization
-- LocalStorage save
-- JSON import/export
-- Undo / Redo
-- Demo world
-- Desktop + mobile controls
-- No build step
-- No backend
+## Model
 
-Deploy: GitHub → Settings → Pages → Deploy from branch → `main` / `/root`.
+```text
+Surovina
+   ↓
+ Pack
+   ↓
+ Box
+   ↓
+Pozice
+```
 
-Controls:
-- Mouse drag: camera
-- Click: build / erase
-- R: rotate
-- Ctrl+Z / Ctrl+Y: undo / redo
-- Mobile joystick: movement
-- Jump: jump button
+Critical rule: **one Box has exactly one Pozice**. Packs inherit their displayed Pozice from their current Box.
+
+## UI
+
+- Dashboard
+- Packy
+- Boxy
+- Pozice
+- Suroviny
+- Pohyby
+- Historie
+- Global search / `Ctrl+K` / `⌘K`
+- Pack detail drawer
+- Box detail drawer
+- Pack move flow
+- Box move flow
+- New Pack flow
+- Responsive desktop/mobile layout
+- Light neutral design system with lime accent
+
+## Data fields
+
+Pack: `ID Pack`, `Surovina`, `Šarže`, `Expirace MM/YY`, `Box`, `Stav`.
+
+Box: `ID Box`, `Pozice`.
+
+No separate Pack position is stored in the model.
+
+## GitHub Pages
+
+The application is static and can be deployed from `main` / root using GitHub Pages.
+
+Current demo data is held in `app.js`. The next integration step is replacing this local state with the Botanic Google Sheets / Apps Script API while preserving the same UI and validation model.
