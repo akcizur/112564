@@ -1,0 +1,3 @@
+export const ENGINE_VERSION="1.0.1",STORAGE_KEY="byldr-world-v1",UNIT=1,BRICK_H=1.2,PLATE_H=.4,PLAYER_EYE_H=1.8,PLAYER_RADIUS=.4,MOVE_SPEED=8,GRAVITY=30,JUMP_FORCE=12,MAX_UNDO=500;
+export const COLORS=[{name:"Red",hex:0xff3b30},{name:"Blue",hex:0x007aff},{name:"Green",hex:0x34c759},{name:"Yellow",hex:0xffcc00},{name:"Purple",hex:0xaf52de},{name:"White",hex:0xffffff},{name:"Black",hex:0x222222},{name:"Orange",hex:0xff9500}];
+export const BRICK_TYPES=[{id:"b11",name:"Kostka",w:1,l:1,type:"brick"},{id:"b21",name:"Kostka",w:2,l:1,type:"brick"},{id:"b41",name:"Kostka",w:4,l:1,type:"brick"},{id:"b22",name:"Kostka",w:2,l:2,type:"brick"},{id:"b24",name:"Kostka",w:2,l:4,type:"brick"},{id:"p11",name:"Plate",w:1,l:1,type:"plate"},{id:"p12",name:"Plate",w:1,l:2,type:"plate"}];

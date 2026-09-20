@@ -1,0 +1,2 @@
+export const gridVertex=`varying vec3 vPos;void main(){vPos=(modelMatrix*vec4(position,1.0)).xyz;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`;
+export const gridFragment=`uniform vec3 uColor;uniform vec3 uPlayerPos;uniform float uRadius;varying vec3 vPos;void main(){float d=distance(vPos.xz,uPlayerPos.xz);float f=clamp(1.0-d/uRadius,0.0,1.0);vec2 g=abs(fract(vPos.xz+.5)-.5)/fwidth(vPos.xz);float l=min(g.x,g.y);float m=1.0-smoothstep(0.0,1.5,l);if(f<.01||m<.01)discard;gl_FragColor=vec4(uColor,m*f*.4);}`;

@@ -1,0 +1,1 @@
+const THREE=window.THREE;export const state={mode:"BUILD",colorIdx:1,brickTypeIdx:0,brickRot:0,move:{x:0,y:0},rot:{y:0,p:0},vel:new THREE.Vector3(),canJump:false,pos:new THREE.Vector3(5,1.8,10)};export function resetPlayer(){state.pos.set(5,1.8,10);state.rot.y=0;state.rot.p=0;state.vel.set(0,0,0);}

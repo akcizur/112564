@@ -1,0 +1,8 @@
+import{STORAGE_KEY,ENGINE_VERSION,BRICK_TYPES}from"./constants.js";import{state}from"./state.js";import{bricksGlobal,clearAll,addBrickToChunk}from"./chunks.js";import{serializeBrick,createBrickFromData}from"./bricks.js";import{undoManager}from"./undo.js";
+export function getWorldData(){return{meta:{engine:"BYLDR",version:ENGINE_VERSION,createdAt:Date.now()},player:{pos:state.pos.toArray(),rot:[state.rot.y,state.rot.p]},bricks:bricksGlobal.map(serializeBrick),history:undoManager.serialize()}}
+export function saveWorld(){localStorage.setItem(STORAGE_KEY,JSON.stringify(getWorldData()))}
+export function hasSavedWorld(){return!!localStorage.getItem(STORAGE_KEY)}
+export function loadSavedWorld(scene){const r=localStorage.getItem(STORAGE_KEY);if(!r)return false;loadWorldData(scene,JSON.parse(r));return true}
+export function loadWorldData(scene,d){clearAll(scene);for(const x of Array.isArray(d?.bricks)?d.bricks:[]){if(!BRICK_TYPES.some(t=>t.id===x.typeId))continue;const b=createBrickFromData(x);if(b)addBrickToChunk(scene,b)}if(Array.isArray(d?.player?.pos))state.pos.fromArray(d.player.pos);if(Array.isArray(d?.player?.rot)){state.rot.y=Number(d.player.rot[0])||0;state.rot.p=Number(d.player.rot[1])||0}undoManager.deserialize(d?.history)}
+export function exportWorld(){const blob=new Blob([JSON.stringify(getWorldData(),null,2)],{type:"application/json"}),u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download="byldr-world.json";a.click();URL.revokeObjectURL(u)}
+export function importWorldFile(file,scene){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);loadWorldData(scene,d);saveWorld();res(d)}catch(e){rej(e)}};r.onerror=()=>rej(r.error);r.readAsText(file)})}

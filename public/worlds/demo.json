@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "engine": "BYLDR",
+    "version": "1.0.1",
+    "name": "Demo World"
+  },
+  "player": {
+    "pos": [
+      5,
+      1.8,
+      10
+    ],
+    "rot": [
+      0,
+      0
+    ]
+  },
+  "bricks": []
+}
