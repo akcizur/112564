@@ -1,7 +1,44 @@
-<!doctype html><html lang="cs"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0a0a0a"><title>BYLDR Engine 1.0.1</title>
-<link rel="icon" href="./public/favicon.svg"><link rel="stylesheet" href="./src/styles/ui.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.10.1/nipplejs.min.js"></script>
-</head><body><div id="app"></div><script type="module" src="./src/main.js"></script></body></html>
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>Botanic Operations</title>
+  <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">B</div><div><strong>BOTANIC</strong><span>Operations</span></div></div>
+    <nav>
+      <button class="nav active" data-view="dashboard"><span>⌂</span> Dashboard</button>
+      <button class="nav" data-view="packs"><span>▦</span> Packy</button>
+      <button class="nav" data-view="boxes"><span>□</span> Boxy</button>
+      <button class="nav" data-view="positions"><span>⌗</span> Pozice</button>
+      <button class="nav" data-view="materials"><span>◈</span> Suroviny</button>
+      <div class="nav-label">OPERACE</div>
+      <button class="nav" data-view="moves"><span>↔</span> Pohyby</button>
+      <button class="nav" data-view="history"><span>◷</span> Historie</button>
+    </nav>
+    <div class="sidebar-bottom"><button class="nav"><span>⚙</span> Nastavení</button></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="mobile-brand"><div class="brand-mark">B</div><strong>BOTANIC</strong></div>
+      <div class="global-search"><span>⌕</span><input id="search" placeholder="Hledat Pack, Box, surovinu, šarži nebo pozici…"><kbd>⌘ K</kbd></div>
+      <div class="top-actions"><button class="icon-btn" id="refresh" title="Obnovit">↻</button><button class="btn primary" id="newPack">+ Pack</button></div>
+    </header>
+
+    <section class="content" id="app"></section>
+  </main>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer"><button class="drawer-close" id="drawerClose">×</button><div id="drawerContent"></div></aside>
+<div class="modal" id="modal"><div class="modal-card" id="modalContent"></div></div>
+<div class="toast" id="toast"></div>
+<script src="./app.js"></script>
+</body>
+</html>
